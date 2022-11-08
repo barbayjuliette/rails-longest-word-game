@@ -1,3 +1,6 @@
+require 'open-uri'
+require 'json'
+
 class GamesController < ApplicationController
   def new
     @grid = []
@@ -14,7 +17,7 @@ class GamesController < ApplicationController
     @result =
       if only_grid_letters(grid) == false
         "Sorry but #{@word.upcase} cannot be built out of #{grid.join(" ")}"
-      elsif api[:found] == false
+      elsif api["found"] == false
         "Sorry but #{@word.upcase} is not a valid english word"
       else
         "Congratulations! #{@word.upcase} is a valid word"
@@ -32,11 +35,5 @@ class GamesController < ApplicationController
       grid.delete_at(index)
     end
   end
-
-  def check_valid_word
-
-
-  end
-
 
 end
